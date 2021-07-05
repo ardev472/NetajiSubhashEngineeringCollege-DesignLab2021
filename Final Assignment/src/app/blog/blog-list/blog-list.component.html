@@ -1,0 +1,36 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="card" *ngFor="let blog of allblogs">
+        <div class="col">
+          <div class="card-body">
+            <div class="card-header">
+              <h3>{{ blog.title }}</h3>
+            </div>
+            <div class="card-body">
+              <quill-editor
+                class="preview-editor"
+                [ngModel]="blog.content"
+                placeholder="No description set."
+                [modules]="viewOnlyEditorOption"
+                [readOnly]="true"
+              >
+              </quill-editor>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a [routerLink]="'blogs/' + blog._id"> Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- we can add image edynamically, show as per blogs, multiple images, with a blog,
+  multiple comment, as per the comment the owner of the blog may reply.
+  Rating, for blog. -->
